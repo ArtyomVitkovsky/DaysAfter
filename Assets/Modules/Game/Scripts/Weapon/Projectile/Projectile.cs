@@ -11,7 +11,19 @@ namespace Modules.Game.Scripts.Weapon.Projectile
         [SerializeField] protected float damage;
         protected UnitBattleStats damagedUnit;
 
+        private Transform parent;
+        
         private Coroutine disableCoroutine;
+
+        private void Awake()
+        {
+            parent = transform.parent;
+        }
+        
+        private void OnEnable()
+        {
+            transform.SetParent(null);
+        }
         
         public void Damage()
         {
@@ -28,6 +40,8 @@ namespace Modules.Game.Scripts.Weapon.Projectile
 
         protected virtual void OnCollisionEnter(Collision collision)
         {
+            if(collision.gameObject.CompareTag("Player")) return;
+
             if (collision.gameObject.TryGetComponent(out UnitBattleStats unitStats))
             {
                 damagedUnit = unitStats;
@@ -38,14 +52,18 @@ namespace Modules.Game.Scripts.Weapon.Projectile
         protected IEnumerator DisableCoroutine(float delay)
         {
             yield return new WaitForSeconds(delay);
+            transform.SetParent(parent);
             gameObject.SetActive(false);
         }
 
-        private void OnDisable()
+        public virtual void OnDisable()
         {
             if(disableCoroutine != null) StopCoroutine(disableCoroutine);
-            transform.localPosition = Vector3.zero;
             
+            transform.localRotation = Quaternion.identity;
+            transform.localPosition = Vector3.zero;
+
+            _rigidbody.velocity = Vector3.zero;
             _rigidbody.isKinematic = false;
         }
     }

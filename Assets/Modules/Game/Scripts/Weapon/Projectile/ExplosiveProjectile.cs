@@ -45,5 +45,11 @@ namespace Modules.Game.Scripts.Weapon.Projectile
                 }
             }
         }
+
+        public override void OnDisable()
+        {
+            base.OnDisable();
+            explosion.SetActive(false);
+        }
     }
 }
