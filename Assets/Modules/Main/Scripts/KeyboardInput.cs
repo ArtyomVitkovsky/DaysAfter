@@ -1,4 +1,3 @@
-using Modules.Game.Scripts;
 using UnityEngine;
 
 namespace Modules.Main.Scripts
@@ -19,7 +18,7 @@ namespace Modules.Main.Scripts
             //if (xAxisMove != 0)
             //if (yAxisMove != 0)
             //if (zAxisMove != 0) 
-            
+
             OnXAxisMove?.Invoke(xAxisMove);
             OnYAxisMove?.Invoke(yAxisMove);
             OnZAxisMove?.Invoke(zAxisMove);
