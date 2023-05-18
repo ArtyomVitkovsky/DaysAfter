@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4152984965246098706}
   - component: {fileID: 5468272794598249856}
   - component: {fileID: 2341758183045698541}
+  - component: {fileID: 3555498773047065327}
   m_Layer: 0
   m_Name: ProjectContext
   m_TagString: Untagged
@@ -48,6 +49,7 @@ MonoBehaviour:
   _scriptableObjectInstallers: []
   _monoInstallers:
   - {fileID: 2341758183045698541}
+  - {fileID: 3555498773047065327}
   _installerPrefabs: []
   _parentNewObjectsUnderContext: 0
   _editorReflectionBakingCoverageMode: 0
@@ -76,3 +78,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyboardInputPrefab: {fileID: 4733130399007746383, guid: e4c4f63433405ce42a40799d96830ed2, type: 3}
   mouseInputPrefab: {fileID: 2148852821296298722, guid: 75ed6a1539bebf3418dc3d92353dd1d7, type: 3}
+--- !u!114 &3555498773047065327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3241899877391982409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8df38a3c613f4281a161cae298444b82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneLoader: {fileID: 1871214117340446203, guid: 9814412d3e01b0543b66e816611ee0c0, type: 3}

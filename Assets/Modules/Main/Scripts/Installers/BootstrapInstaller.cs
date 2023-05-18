@@ -1,4 +1,3 @@
-using Modules.Game.Scripts;
 using UnityEngine;
 using Zenject;
 
@@ -6,29 +5,21 @@ namespace Modules.Main.Scripts.Installers
 {
     public class BootstrapInstaller : MonoInstaller
     {
-        [SerializeField] private InputService inputService;
-        [SerializeField] private MouseInput mouseInputService;
+        [SerializeField] private SceneLoader sceneLoader;
         
         public override void InstallBindings()
         {
-            BindInputService();
+            BindSceneLoader();
+        }
 
-            BindMouseInput();
-        }
-        
-        private void BindInputService()
+        private void BindSceneLoader()
         {
+            var sceneLoaderInstance = Container
+                .InstantiatePrefabForComponent<SceneLoader>(sceneLoader);
+
             Container
-                .Bind<InputService>()
-                .FromInstance(inputService)
-                .AsSingle();
-        }
-        
-        private void BindMouseInput()
-        {
-            Container
-                .Bind<MouseInput>()
-                .FromInstance(mouseInputService)
+                .Bind<SceneLoader>()
+                .FromInstance(sceneLoaderInstance)
                 .AsSingle();
         }
     }
